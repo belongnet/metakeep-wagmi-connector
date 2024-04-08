@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "skipDefaultLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

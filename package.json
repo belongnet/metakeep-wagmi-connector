@@ -1,0 +1,49 @@
+{
+  "name": "@reslear/metakeep-wagmi-connector",
+  "version": "0.0.1",
+  "description": "A connector for Metakeep and Wagmi",
+  "keywords": [
+    "metakeep",
+    "wagmi",
+    "connector"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reslear/metakeep-wagmi-connector+git"
+  },
+  "license": "MIT",
+  "author": "reslear",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/metakeep-connector.js",
+      "require": "./dist/metakeep-connector.js",
+      "types": "./dist/metakeep-connector.d.ts"
+    }
+  },
+  "main": "dist/metakeep-connector.js",
+  "module": "dist/metakeep-connector.js",
+  "types": "dist/metakeep-connector.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "pnpm build",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@wagmi/connectors": "3.1.11",
+    "@wagmi/core": "1.4.13",
+    "metakeep": "^2.2.1",
+    "viem": "1.21.4",
+    "wagmi": "1.4.13"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
