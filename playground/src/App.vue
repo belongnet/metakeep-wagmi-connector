@@ -1,4 +1,8 @@
 <script setup>
+/**
+ * Example from:
+ * - https://github.com/unicape/use-wagmi/blob/0.x/examples/vite/src/main.ts
+ */
 import { useAccount, useConnect, useDisconnect } from 'use-wagmi'
 import { InjectedConnector } from 'use-wagmi/connectors/injected'
 import truncateEthAddress from 'truncate-eth-address'
