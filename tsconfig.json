@@ -1,17 +1,26 @@
+// https://github.com/wevm/wagmi/blob/main/tsconfig.base.json
 {
   "compilerOptions": {
     "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2021",
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true,
     "skipDefaultLibCheck": true,
     "outDir": "dist",
     "rootDir": "src",
-    "declaration": true
+    "declaration": true,
+    "sourceMap": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/old.ts",
   ]
 }

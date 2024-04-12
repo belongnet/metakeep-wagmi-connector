@@ -9,39 +9,40 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reslear/metakeep-wagmi-connector+git"
+    "url": "git+https://github.com/reslear/metakeep-wagmi-connector"
   },
   "license": "MIT",
   "author": "reslear",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/metakeep-connector.js",
-      "require": "./dist/metakeep-connector.js",
-      "types": "./dist/metakeep-connector.d.ts"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
-  "main": "dist/metakeep-connector.js",
-  "module": "dist/metakeep-connector.js",
-  "types": "dist/metakeep-connector.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsc",
     "postinstall": "pnpm build",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@wagmi/connectors": "3.1.11",
-    "@wagmi/core": "1.4.13",
+    "@wagmi/connectors": "4.1.25",
+    "@wagmi/core": "2.6.16",
     "metakeep": "^2.2.1",
-    "viem": "1.21.4",
-    "wagmi": "1.4.13"
+    "viem": "2.9.16",
+    "wagmi": "2.5.19"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public"

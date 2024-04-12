@@ -1,26 +1,27 @@
-<template>
-  <div>
-    <div>
-      <template v-for="x in connectors" :key="x.name">
-        <button
-          :disabled="!x.ready || isReconnecting || connector?.id === x.id"
-          @click="() => connect({ connector: x })"
-        >
-          <span>{{ x.name }}</span>
-          <span v-if="!x.ready"> (unsupported)</span>
-          <span v-if="isLoading && x.id === pendingConnector?.id">…</span>
-        </button>
-        &nbsp;
-      </template>
-    </div>
-
-    <div>{{ error && error.message }}</div>
-  </div>
-</template>
-
 <script lang="ts" setup>
-import { useAccount, useConnect } from 'use-wagmi'
+import { useChainId, useConnect, useConnections } from 'use-wagmi'
+import { computed } from 'vue'
 
-const { connector, isReconnecting } = useAccount()
-const { connect, connectors, isLoading, error, pendingConnector } = useConnect()
+const chainId = useChainId()
+const { connectors, connect, status, error } = useConnect()
+const connections = useConnections()
+
+const connectionIds = computed(() => {
+  return connections.value.map((connection) => connection.connector.uid)
+})
 </script>
+
+<template>
+  <h2>Connect</h2>
+  <button
+    v-for="connector in connectors"
+    :key="connector.uid"
+    @click="() => connect({ connector, chainId })"
+    type="button"
+    :disabled="connectionIds.includes(connector.uid)"
+  >
+    {{ connector.name }}
+  </button>
+  <div>{{ status }}</div>
+  <div>{{ error?.message }}</div>
+</template>
