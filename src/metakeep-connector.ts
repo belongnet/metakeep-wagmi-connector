@@ -32,6 +32,7 @@ export function metakeep(parameters: MetaKeepParameters) {
     store: {
       state: { chainId: number }
     }
+    'wagmi.recentConnectorId': string
   }
 
   let provider_: Provider | undefined
@@ -45,7 +46,7 @@ export function metakeep(parameters: MetaKeepParameters) {
       const provider = await this.getProvider()
       if (!provider) throw new ProviderNotFoundError()
 
-      const accounts = (await provider?.enable()) as Address[]
+      const accounts = await this.getAccounts()
 
       // const user = await config.storage?.getItem('metakeep-user')
 
@@ -74,7 +75,9 @@ export function metakeep(parameters: MetaKeepParameters) {
 
     async getAccounts() {
       const provider = await this.getProvider()
-      return provider.accounts as Address[]
+      const accounts = await provider?.enable()
+
+      return accounts as Address[]
     },
 
     async getChainId() {
@@ -109,12 +112,20 @@ export function metakeep(parameters: MetaKeepParameters) {
         })
 
         provider_ = (await sdk.ethereum) as MetaKeepProvider
+
+        console.log(sdk)
+        console.log(provider_)
       }
 
       return provider_!
     },
 
     async isAuthorized() {
+      const recentConnectorId =
+        await config.storage?.getItem('recentConnectorId')
+
+      if (recentConnectorId !== this.id) return false
+
       try {
         const accounts = await this.getAccounts()
         return !!accounts.length

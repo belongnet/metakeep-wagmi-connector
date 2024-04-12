@@ -13,7 +13,7 @@ const { chains, switchChain, error } = useSwitchChain()
       v-for="chain in chains"
       :disabled="chainId === chain.id"
       :key="chain.id"
-      @click="() => switchChain({ chainId: chain.id })"
+      @click="() => switchChain({ chainId: chain.id as 1 | 137 })"
       type="button"
     >
       {{ chain.name }}

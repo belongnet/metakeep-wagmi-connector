@@ -8,6 +8,7 @@ import Connect from './components/Connect.vue'
 import Account from './components/Account.vue'
 import SwitchChain from './components/SwitchChain.vue'
 import MetaKeepSdk from './components/MetaKeepSdk.vue'
+import SignMessage from './components/account/SignMessage.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import MetaKeepSdk from './components/MetaKeepSdk.vue'
   <Account />
   <SwitchChain />
 
+  <SignMessage />
   <hr />
 
   <MetaKeepSdk />
