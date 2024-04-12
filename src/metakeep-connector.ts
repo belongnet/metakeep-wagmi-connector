@@ -1,34 +1,38 @@
 import type { MetaKeep } from 'metakeep'
 import {
-  Address,
   ProviderRpcError,
   SwitchChainError,
   UserRejectedRequestError,
   getAddress,
   numberToHex,
 } from 'viem'
+import type { Address } from 'viem'
 import {
   ChainNotConfiguredError,
   ProviderNotFoundError,
   createConnector,
 } from '@wagmi/core'
 
-type MetaKeepParameters = ConstructorParameters<typeof MetaKeep>[0]
+export type MetaKeepParameters = ConstructorParameters<typeof MetaKeep>[0]
 
-type MetaKeepProvider = {
+export type MetaKeepProvider = {
   chainId: number
-  accounts: string[]
+  accounts: Address[]
   enable: () => Promise<string[]>
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>
   getUser: () => { email: string }
-  setUser: (email: string) => void
+  setUser: (args: { email: string }) => void
+  connected: boolean
 }
 
 export function metakeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
   type Properties = {}
   type StorageItem = {
-    'metakeep-user': string
+    metakeep: {
+      email: string
+      accounts: Address[]
+    }
     store: {
       state: { chainId: number }
     }
@@ -43,55 +47,66 @@ export function metakeep(parameters: MetaKeepParameters) {
     type: 'MetaKeep',
 
     async connect({ chainId } = {}) {
-      const provider = await this.getProvider()
-      if (!provider) throw new ProviderNotFoundError()
+      try {
+        const provider = await this.getProvider()
+        if (!provider) throw new ProviderNotFoundError()
 
-      const accounts = await this.getAccounts()
+        let accounts = await this.getAccounts()
 
-      // const user = await config.storage?.getItem('metakeep-user')
+        if (!accounts.length) {
+          accounts = (await provider.enable()).map((x) => getAddress(x))
 
-      const user = provider.getUser()
-      await config.storage?.setItem('metakeep-user', user.email)
+          console.log(accounts)
 
-      // Switch to chain if provided
-      let currentChainId = await this.getChainId()
+          await config.storage?.setItem('metakeep', {
+            email: provider.getUser().email,
+            accounts: accounts as Address[],
+          })
+        }
 
-      if (chainId && currentChainId !== chainId) {
-        const chain = await this.switchChain!({ chainId }).catch((error) => {
-          if (error.code === UserRejectedRequestError.code) throw error
-          return { id: currentChainId }
-        })
-        currentChainId = chain?.id ?? currentChainId
+        // Switch to chain if provided
+        let currentChainId = await this.getChainId()
+
+        if (chainId && currentChainId !== chainId) {
+          const chain = await this.switchChain!({ chainId }).catch((error) => {
+            if (error.code === UserRejectedRequestError.code) throw error
+            return { id: currentChainId }
+          })
+          currentChainId = chain?.id ?? currentChainId
+        }
+
+        return { accounts, chainId: currentChainId }
+      } catch (error: any) {
+        if (error?.status === 'USER_REQUEST_DENIED') {
+          throw new UserRejectedRequestError(error as Error)
+        }
+
+        throw error
       }
-
-      return { accounts, chainId: currentChainId }
     },
 
     async disconnect() {
       provider_ = undefined
-      await config.storage?.removeItem('metakeep-user')
+      await config.storage?.removeItem('metakeep')
       this.onDisconnect()
     },
 
     async getAccounts() {
       const provider = await this.getProvider()
-      const accounts = await provider?.enable()
-
-      return accounts as Address[]
+      return provider.accounts.map((x) => getAddress(x))
     },
 
     async getChainId() {
       const provider = await this.getProvider()
-      const chainId = provider.chainId
-
-      console.log('chainId', chainId, Number(chainId))
-
-      return Number(chainId)
+      return Number(provider.chainId)
     },
 
     async getProvider({ chainId } = {}) {
-      const user = await config.storage?.getItem('metakeep-user')
+      const user = await config.storage?.getItem('metakeep')
       const store = await config.storage?.getItem('store')
+
+      const isRecentlyConnected =
+        (await config.storage?.getItem('recentConnectorId')) === this.id
 
       if (!provider_) {
         const { MetaKeep } = await import('metakeep')
@@ -107,14 +122,37 @@ export function metakeep(parameters: MetaKeepParameters) {
           appId: parameters.appId,
           rpcNodeUrls: parameters.rpcNodeUrls ?? rpcNodeUrls,
           environment: parameters.environment,
-          user: user ?? parameters.user,
+          user: user ?? parameters.user?.email,
           chainId: chainId ?? store?.state?.chainId ?? config.chains?.[0]?.id,
         })
 
         provider_ = (await sdk.ethereum) as MetaKeepProvider
 
+        if (isRecentlyConnected && user) {
+          // // @ts-ignore
+          // sdk.setUser({
+          //   email: user?.email,
+          // })
+
+          // // @ts-ignore
+          // sdk.accounts = user?.accounts.map((x) => getAddress(x))
+          // // @ts-ignore
+          // sdk.connected = true
+
+          provider_.accounts = user?.accounts.map((x) => getAddress(x))
+          provider_.connected = true
+          provider_.setUser({
+            email: user.email,
+          })
+        }
+
         console.log(sdk)
         console.log(provider_)
+
+        // if (recentConnectorId === this.id) {
+        //   const accounts = await provider_.enable()
+        //   this.onAccountsChanged(accounts)
+        // }
       }
 
       return provider_!
