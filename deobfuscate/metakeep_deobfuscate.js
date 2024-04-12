@@ -1074,59 +1074,28 @@ var Ea = (function () {
     },
     {
       key: 'enable',
-      value:
-        ((m = za(
-          xa().mark(function a() {
-            var b
-            var c
-            var d
-            var f
-            var g
-            return xa().wrap(
-              function (a) {
-                while (true) {
-                  switch ((a.prev = a.next)) {
-                    case 0:
-                      if (!this.connected) {
-                        a.next = 2
-                        break
-                      }
-                      return a.abrupt('return', this.accounts)
-                    case 2:
-                      a.prev = 2
-                      a.next = 5
-                      return this.loginUser({
-                        user: this.getUser(),
-                      })
-                    case 5:
-                      b = a.sent
-                      c = b.wallet
-                      d = b.user
-                      f = d === undefined ? {} : d
-                      g = c.ethAddress
-                      this.accounts = [g]
-                      this.connected = true
-                      this.setUser(f)
-                      return a.abrupt('return', Promise.resolve(this.accounts))
-                    case 14:
-                      a.prev = 14
-                      a.t0 = a.catch(2)
-                      return a.abrupt('return', Promise.reject(a.t0))
-                    case 17:
-                    case 'end':
-                      return a.stop()
-                  }
-                }
-              },
-              a,
-              this,
-              [[2, 14]]
-            )
-          })
-        )),
-        function () {
-          return m.apply(this, arguments)
-        }),
+      value: async function enable() {
+        let userData, walletData, user, ethAddress
+
+        if (this.connected) {
+          return this.accounts
+        }
+
+        try {
+          userData = await this.loginUser({ user: this.getUser() })
+          walletData = userData.wallet
+          user = userData.user || {}
+          ethAddress = walletData.ethAddress
+
+          this.accounts = [ethAddress]
+          this.connected = true
+          this.setUser(user)
+
+          return this.accounts
+        } catch (error) {
+          return Promise.reject(error)
+        }
+      },
     },
   ]
   if (g) {
