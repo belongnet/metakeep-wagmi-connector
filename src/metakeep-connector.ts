@@ -27,7 +27,12 @@ type MetaKeepProvider = {
 export function metakeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
   type Properties = {}
-  type StorageItem = { 'metakeep-user': string; 'metakeep-connected': boolean }
+  type StorageItem = {
+    'metakeep-user': string
+    store: {
+      state: { chainId: number }
+    }
+  }
 
   let provider_: Provider | undefined
 
@@ -46,7 +51,6 @@ export function metakeep(parameters: MetaKeepParameters) {
 
       const user = provider.getUser()
       await config.storage?.setItem('metakeep-user', user.email)
-      await config.storage?.setItem('metakeep-connected', true)
 
       // Switch to chain if provided
       let currentChainId = await this.getChainId()
@@ -64,7 +68,7 @@ export function metakeep(parameters: MetaKeepParameters) {
 
     async disconnect() {
       provider_ = undefined
-      await config.storage?.removeItem('metakeep-connected')
+      await config.storage?.removeItem('metakeep-user')
       this.onDisconnect()
     },
 
@@ -83,10 +87,8 @@ export function metakeep(parameters: MetaKeepParameters) {
     },
 
     async getProvider({ chainId } = {}) {
-      console.log('chainId getProvider', chainId)
-
-      const connectedUser = await config.storage?.getItem('metakeep-user')
-      const isConnected = await config.storage?.getItem('metakeep-connected')
+      const user = await config.storage?.getItem('metakeep-user')
+      const store = await config.storage?.getItem('store')
 
       if (!provider_) {
         const { MetaKeep } = await import('metakeep')
@@ -102,16 +104,11 @@ export function metakeep(parameters: MetaKeepParameters) {
           appId: parameters.appId,
           rpcNodeUrls: parameters.rpcNodeUrls ?? rpcNodeUrls,
           environment: parameters.environment,
-          user: connectedUser ?? parameters.user,
-          chainId: chainId ?? config.chains?.[0]?.id,
+          user: user ?? parameters.user,
+          chainId: chainId ?? store?.state?.chainId ?? config.chains?.[0]?.id,
         })
 
         provider_ = (await sdk.ethereum) as MetaKeepProvider
-
-        if (connectedUser && isConnected) {
-          const accounts = (await provider_?.enable()) as Address[]
-          this.onAccountsChanged(accounts)
-        }
       }
 
       return provider_!
