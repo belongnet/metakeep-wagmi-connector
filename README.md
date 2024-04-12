@@ -75,5 +75,11 @@ Also connector for Wagmi v1 docs are still available at [0.x branch](https://git
 - https://docs.metakeep.xyz/reference/web3-provider
 - https://github.com/PassbirdCo
 
+# Related connectors
+- https://wagmi.sh/dev/creating-connectors
+- https://github.com/blocto/blocto-sdk/blob/develop/adapters/wagmi-connector/src/connector.ts
+- https://github.com/magiclabs/wagmi-magic-connector/blob/main/src/lib/connectors/dedicatedWalletConnector.ts
+- https://github.com/Web3Auth/web3auth-wagmi-connector/blob/master/src/lib/connector.ts
+
 ## License
 This project is licensed under the terms of the [MIT license](LICENSE).

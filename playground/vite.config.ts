@@ -12,6 +12,7 @@ export default defineConfig({
       '@reslear/metakeep-wagmi-connector': resolve(
         '../src/metakeep-connector.ts'
       ),
+      metakeep: resolve('../node_modules/metakeep/lib/index.js'),
     },
   },
 })

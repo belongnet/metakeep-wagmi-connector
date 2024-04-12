@@ -9,38 +9,48 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reslear/metakeep-wagmi-connector"
+    "url": "https://github.com/reslear/metakeep-wagmi-connector.git"
   },
   "license": "MIT",
   "author": "reslear",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "default": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsc",
-    "postinstall": "pnpm build",
+    "build": "pnpm run clean && pnpm run build:esm+types",
+    "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "optimize": "esbuild dist/esm/metakeep.js --drop:console --outfile=dist/esm/metakeep.min.js",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@wagmi/connectors": "4.1.25",
-    "@wagmi/core": "2.6.16",
-    "metakeep": "^2.2.1",
-    "viem": "2.9.16",
-    "wagmi": "2.5.19"
+    "metakeep": "^2.2.1"
+  },
+  "peerDependencies": {
+    "@wagmi/core": "2.x",
+    "typescript": ">=5.0.4",
+    "viem": "2.x"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "@wagmi/core": "2.6.16",
+    "esbuild": "^0.20.2",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },

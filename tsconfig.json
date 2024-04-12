@@ -20,7 +20,4 @@
   "include": [
     "src/**/*.ts"
   ],
-  "exclude": [
-    "src/old.ts",
-  ]
 }

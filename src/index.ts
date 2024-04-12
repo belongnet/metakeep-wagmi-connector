@@ -1,1 +1,1 @@
-export * from './metakeep-connector.js'
+export * from './metakeep.js'
