@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.1.0
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.0.5...v0.1.0)
+
+### 🚀 Enhancements
+
+- Auto reconnect ([0a4eacd](https://github.com/reslear/metakeep-wagmi-connector/commit/0a4eacd))
+- ⚠️  Wagmi v2 connector ([d13c8c2](https://github.com/reslear/metakeep-wagmi-connector/commit/d13c8c2))
+
+### 🏡 Chore
+
+- **release:** V0.0.6 ([39186ff](https://github.com/reslear/metakeep-wagmi-connector/commit/39186ff))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Wagmi v2 connector ([d13c8c2](https://github.com/reslear/metakeep-wagmi-connector/commit/d13c8c2))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+- GitHub Actions ([@betterqualityassuranceuser](http://github.com/betterqualityassuranceuser))
+
 ## v0.0.5
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.0.4...v0.0.5)
