@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Update npm-publish.yml ([99ce490](https://github.com/reslear/metakeep-wagmi-connector/commit/99ce490))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.0.3
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.0.2...v0.0.3)
