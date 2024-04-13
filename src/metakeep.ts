@@ -56,8 +56,6 @@ export function metakeep(parameters: MetaKeepParameters) {
         if (!accounts.length) {
           accounts = (await provider.enable()).map((x) => getAddress(x))
 
-          console.log(accounts)
-
           await config.storage?.setItem('metakeep', {
             email: provider.getUser().email,
             accounts: accounts as Address[],
@@ -128,31 +126,14 @@ export function metakeep(parameters: MetaKeepParameters) {
 
         provider_ = (await sdk.ethereum) as MetaKeepProvider
 
+        // simulate reconnection
         if (isRecentlyConnected && user) {
-          // // @ts-ignore
-          // sdk.setUser({
-          //   email: user?.email,
-          // })
-
-          // // @ts-ignore
-          // sdk.accounts = user?.accounts.map((x) => getAddress(x))
-          // // @ts-ignore
-          // sdk.connected = true
-
           provider_.accounts = user?.accounts.map((x) => getAddress(x))
           provider_.connected = true
           provider_.setUser({
             email: user.email,
           })
         }
-
-        console.log(sdk)
-        console.log(provider_)
-
-        // if (recentConnectorId === this.id) {
-        //   const accounts = await provider_.enable()
-        //   this.onAccountsChanged(accounts)
-        // }
       }
 
       return provider_!
@@ -226,7 +207,6 @@ export function metakeep(parameters: MetaKeepParameters) {
     },
 
     onChainChanged(chain) {
-      console.log('onChainChanged', chain)
       const chainId = Number(chain)
       config.emitter.emit('change', { chainId })
     },

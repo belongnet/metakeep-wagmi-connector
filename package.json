@@ -32,7 +32,6 @@
     "build": "pnpm run clean && pnpm run build:esm+types",
     "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "optimize": "esbuild dist/esm/metakeep.js --drop:console --outfile=dist/esm/metakeep.min.js",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
@@ -50,7 +49,6 @@
   },
   "devDependencies": {
     "@wagmi/core": "2.6.16",
-    "esbuild": "^0.20.2",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },

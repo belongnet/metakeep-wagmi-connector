@@ -18,9 +18,6 @@ importers:
       '@wagmi/core':
         specifier: 2.6.16
         version: 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.16)
-      esbuild:
-        specifier: ^0.20.2
-        version: 0.20.2
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -5800,6 +5797,7 @@ packages:
   /isobject@3.0.1:
     resolution: {integrity: sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dev: false
 
   /isomorphic-timers-promises@1.0.1:
