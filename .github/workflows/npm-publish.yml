@@ -1,11 +1,11 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - v*
-    branches:
-      - main
+  # push:
+    #tags:
+    # - v*
+    # branches:
+    #  - main
   workflow_dispatch:
   
 jobs:
@@ -29,7 +29,6 @@ jobs:
           cache: pnpm
 
       - run: pnpm install
-      - run: pnpm build
       
       - name: Creating .npmrc
         run: |
@@ -39,10 +38,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: pnpm install
-
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx changelogen@latest --release
+        run: npx changelogen@latest --release --push --publish
