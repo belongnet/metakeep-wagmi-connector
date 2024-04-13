@@ -9,15 +9,28 @@ import Account from './components/Account.vue'
 import SwitchChain from './components/SwitchChain.vue'
 import MetaKeepSdk from './components/MetaKeepSdk.vue'
 import SignMessage from './components/account/SignMessage.vue'
+import Web3Modal from './components/Web3Modal.vue'
+
+import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi'
+import { useConfig } from 'use-wagmi'
+
+const config = useConfig()
+
+createWeb3Modal({
+  wagmiConfig: config,
+  projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
+  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  enableOnramp: true, // Optional - false as default
+})
 </script>
 
 <template>
+  <h2>Wagmi</h2>
   <Connect />
   <Account />
   <SwitchChain />
-
   <SignMessage />
-  <hr />
-
   <MetaKeepSdk />
+  <h2>Web3Modal</h2>
+  <Web3Modal />
 </template>

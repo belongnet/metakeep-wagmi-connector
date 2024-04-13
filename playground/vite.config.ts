@@ -6,12 +6,20 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), nodePolyfills(), VueDevTools()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-'),
+        },
+      },
+    }),
+    nodePolyfills(),
+    VueDevTools(),
+  ],
   resolve: {
     alias: {
-      '@reslear/metakeep-wagmi-connector': resolve(
-        '../src/metakeep-connector.ts'
-      ),
+      '@reslear/metakeep-wagmi-connector': resolve('../src/index.ts'),
       metakeep: resolve('../node_modules/metakeep/lib/index.js'),
     },
   },
