@@ -1,24 +1,23 @@
 <script setup>
 /**
  * Example from:
- * - https://github.com/unicape/use-wagmi/blob/0.x/examples/vite/src/main.ts
+ * - https://github.com/unicape/use-wagmi/blob/main/playgrounds/vite-vue/src/App.vue
  */
-import { useAccount, useConnect, useDisconnect } from 'use-wagmi'
-import { InjectedConnector } from 'use-wagmi/connectors/injected'
 import truncateEthAddress from 'truncate-eth-address'
 import Connect from './components/Connect.vue'
 import Account from './components/Account.vue'
-import NetworkSwitcher from './components/NetworkSwitcher.vue'
-
-const { address, isConnected } = useAccount()
-const { connect } = useConnect({
-  connector: new InjectedConnector(),
-})
-const { disconnect } = useDisconnect()
+import SwitchChain from './components/SwitchChain.vue'
+import MetaKeepSdk from './components/MetaKeepSdk.vue'
+import SignMessage from './components/account/SignMessage.vue'
 </script>
 
 <template>
   <Connect />
   <Account />
-  <NetworkSwitcher />
+  <SwitchChain />
+
+  <SignMessage />
+  <hr />
+
+  <MetaKeepSdk />
 </template>

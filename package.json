@@ -16,32 +16,41 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/metakeep-connector.js",
-      "require": "./dist/metakeep-connector.js",
-      "types": "./dist/metakeep-connector.d.ts"
+      "default": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
-  "main": "dist/metakeep-connector.js",
-  "module": "dist/metakeep-connector.js",
-  "types": "dist/metakeep-connector.d.ts",
+  "main": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts"
   ],
+  "sideEffects": false,
   "scripts": {
-    "build": "tsc",
-    "postinstall": "pnpm build",
+    "build": "pnpm run clean && pnpm run build:esm+types",
+    "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@wagmi/connectors": "3.1.11",
-    "@wagmi/core": "1.4.13",
-    "metakeep": "^2.2.1",
-    "viem": "1.21.4",
-    "wagmi": "1.4.13"
+    "metakeep": "^2.2.1"
+  },
+  "peerDependencies": {
+    "@wagmi/core": "2.x",
+    "typescript": ">=5.0.4",
+    "viem": "2.x"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "@wagmi/core": "2.6.16",
     "prettier": "^3.2.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public"
