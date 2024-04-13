@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.0
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.1.0...v0.2.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Integrate web3modal BREAKING CHANGE ([d992831](https://github.com/reslear/metakeep-wagmi-connector/commit/d992831))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Integrate web3modal BREAKING CHANGE ([d992831](https://github.com/reslear/metakeep-wagmi-connector/commit/d992831))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.1.0
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.0.5...v0.1.0)
