@@ -12,7 +12,7 @@
     "url": "https://github.com/reslear/metakeep-wagmi-connector.git"
   },
   "license": "MIT",
-  "author": "reslear",
+  "author": "reslear <reslear@gmail.com>",
   "type": "module",
   "exports": {
     ".": {
