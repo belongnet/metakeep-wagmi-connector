@@ -25,7 +25,7 @@ export type MetaKeepProvider = {
   connected: boolean
 }
 
-export function metakeep(parameters: MetaKeepParameters) {
+export function metaKeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
   type Properties = {}
   type StorageItem = {

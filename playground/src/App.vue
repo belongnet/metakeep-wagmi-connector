@@ -25,12 +25,22 @@ createWeb3Modal({
 </script>
 
 <template>
-  <h2>Wagmi</h2>
-  <Connect />
-  <Account />
-  <SwitchChain />
-  <SignMessage />
-  <MetaKeepSdk />
-  <h2>Web3Modal</h2>
-  <Web3Modal />
+  <header>
+    <h1>MetaKeep Playground</h1>
+  </header>
+
+  <main class="container">
+    <h2>Wagmi</h2>
+    <section>
+      <Connect />
+    </section>
+    <Account />
+    <SwitchChain />
+    <SignMessage />
+    <MetaKeepSdk />
+    <h2>Web3Modal</h2>
+    <Web3Modal />
+  </main>
+
+  <footer>2024</footer>
 </template>
