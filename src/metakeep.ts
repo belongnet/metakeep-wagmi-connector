@@ -25,6 +25,8 @@ export type MetaKeepProvider = {
   connected: boolean
 }
 
+const SESSION_TIMEOUT = 3 * 24 * 60 * 60 * 1000
+
 export function metaKeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
   type Properties = {}
@@ -32,6 +34,7 @@ export function metaKeep(parameters: MetaKeepParameters) {
     metakeep: {
       email: string
       accounts: Address[]
+      last: string
     }
     store: {
       state: { chainId: number }
@@ -59,6 +62,7 @@ export function metaKeep(parameters: MetaKeepParameters) {
           await config.storage?.setItem('metakeep', {
             email: provider.getUser().email,
             accounts: accounts as Address[],
+            last: new Date().toISOString(),
           })
         }
 
@@ -100,7 +104,7 @@ export function metaKeep(parameters: MetaKeepParameters) {
     },
 
     async getProvider({ chainId } = {}) {
-      const user = await config.storage?.getItem('metakeep')
+      const session = await config.storage?.getItem('metakeep')
       const store = await config.storage?.getItem('store')
 
       const isRecentlyConnected =
@@ -120,18 +124,24 @@ export function metaKeep(parameters: MetaKeepParameters) {
           appId: parameters.appId,
           rpcNodeUrls: parameters.rpcNodeUrls ?? rpcNodeUrls,
           environment: parameters.environment,
-          user: user ?? parameters.user?.email,
+          user: session?.email ?? parameters.user?.email,
           chainId: chainId ?? store?.state?.chainId ?? config.chains?.[0]?.id,
         })
 
         provider_ = (await sdk.ethereum) as MetaKeepProvider
 
-        // simulate reconnection
-        if (isRecentlyConnected && user) {
-          provider_.accounts = user?.accounts.map((x) => getAddress(x))
+        if (
+          // Check if connector was recently connected
+          isRecentlyConnected &&
+          // Check if session exists
+          session &&
+          // Check if session is not expired
+          Date.now() - Date.parse(session.last) < SESSION_TIMEOUT
+        ) {
+          provider_.accounts = session.accounts.map((x) => getAddress(x))
           provider_.connected = true
           provider_.setUser({
-            email: user.email,
+            email: session.email,
           })
         }
       }
