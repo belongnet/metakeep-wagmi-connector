@@ -48,7 +48,7 @@
     }
   },
   "devDependencies": {
-    "@wagmi/core": "2.6.16",
+    "@wagmi/core": "2.6.17",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
