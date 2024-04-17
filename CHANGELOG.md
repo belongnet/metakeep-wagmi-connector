@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.2
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.1...v0.2.2)
+
+### 🚀 Enhancements
+
+- Implement SESSION_TIMEOUT ([a9fb4f7](https://github.com/reslear/metakeep-wagmi-connector/commit/a9fb4f7))
+- Add session timeout check ([6016fc2](https://github.com/reslear/metakeep-wagmi-connector/commit/6016fc2))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.2.1
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.0...v0.2.1)
