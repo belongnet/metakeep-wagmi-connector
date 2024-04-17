@@ -16,8 +16,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./dist/esm/index.js",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/esm/index.js"
     }
   },
   "main": "dist/esm/index.js",

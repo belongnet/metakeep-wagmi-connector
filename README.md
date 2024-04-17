@@ -4,6 +4,10 @@
 [![Downloads](https://img.shields.io/npm/dt/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
 [![License](https://img.shields.io/npm/l/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
 
+[publint](https://publint.dev/@reslear/metakeep-wagmi-connector) | 
+[arethetypeswrong](https://arethetypeswrong.github.io/?p=%40reslear%2Fmetakeep-wagmi-connector)
+
+
 Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform provided by PassbirdCo. 
 
 Features:

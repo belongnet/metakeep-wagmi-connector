@@ -41,12 +41,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          vue: ['vue', '@vueuse/core'],
+          wevm: ['viem', '@wagmi/core', 'truncate-eth-address', 'use-wagmi'],
           metakeep: ['metakeep'],
-          '@reslear/metakeep-wagmi-connector': [
-            '@reslear/metakeep-wagmi-connector',
-          ],
-          '@wagmi/connectors': ['@wagmi/connectors'],
-          zod: ['zod'],
+          'metakeep-wagmi-connector': ['@reslear/metakeep-wagmi-connector'],
+          web3modal: ['@web3modal/wagmi', '@web3modal/siwe'],
+          'vue-query': ['@tanstack/vue-query'],
         },
       },
     },
