@@ -19,6 +19,6 @@ function onSubmit(event: Event) {
       <button type="submit">Sign Message</button>
     </form>
 
-    {{ data }}
+    <pre>{{ data }}</pre>
   </div>
 </template>

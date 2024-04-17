@@ -6,6 +6,10 @@
 
 Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform provided by PassbirdCo. 
 
+Features:
+- Connects with Wagmi v2 (React/Core/Vue [use-wagmi](https://github.com/unicape/use-wagmi))
+- Supports (Web3Modal) [web3-react](https://docs.walletconnect.com/web3modal/about)
+
 ## Installation
 
 You can install **metakeep-wagmi-connector** using npm, yarn, or pnpm:
@@ -38,6 +42,38 @@ VITE_META_KEEP_APP_ID=your-app-id
 ```
 
 Enjoy!
+
+## Usage
+
+The connector will automatically handle the authentication process with wagmi. see the [wagmi documentation](https://wagmi.sh/) for more information.
+
+```ts
+const { connect } = useConnect()
+
+connect({ connector: 'metakeep' })
+```
+
+### Metakeep Provider access
+
+You can use the [useAccount](https://wagmi.sh/react/api/hooks/useAccount#connector) hook to access the native connector provider.
+
+
+> [!WARNING] 
+> Use this only if you know what you're doing. Instead, it's better to utilize methods at the wagmi level.
+
+
+```ts
+import type { MetaKeepProvider } from '@reslear/metakeep-wagmi-connector'
+
+const { connector } = useAccount()
+
+const provider = <MetaKeepProvider>await connector.value?.getProvider()
+
+const authorizedUser = provider.getUser()
+console.log(authorizedUser)
+```
+
+
 
 ## Migration Guide
 
