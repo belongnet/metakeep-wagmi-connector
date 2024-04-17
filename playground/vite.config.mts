@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { resolve } from 'node:path'
-import VueDevTools from 'vite-plugin-vue-devtools'
+import Inspect from 'vite-plugin-inspect'
+import externalize from 'vite-plugin-externalize-dependencies'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,8 +14,12 @@ export default defineConfig({
         },
       },
     }),
-    nodePolyfills(),
-    VueDevTools(),
+    Inspect(),
+
+    // https://github.com/WalletConnect/web3modal/issues/2159
+    externalize({
+      externals: ['@wagmi/connectors'],
+    }),
   ],
   resolve: {
     alias: {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import truncateEthAddress from 'truncate-eth-address'
 import { useAccount, useDisconnect } from 'use-wagmi'
 
 const { address, chainId, status } = useAccount()
@@ -6,11 +7,11 @@ const { disconnect } = useDisconnect()
 </script>
 
 <template>
-  <div>
+  <div v-if="address">
     <h2>Account</h2>
 
     <div>
-      account: {{ address }}
+      account: {{ truncateEthAddress(address as string) }}
       <br />
       chainId: {{ chainId }}
       <br />

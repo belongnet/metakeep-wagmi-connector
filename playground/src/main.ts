@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { http, createConfig, UseWagmiPlugin } from 'use-wagmi'
 import { mainnet, polygon } from 'use-wagmi/chains'
-import { injected, walletConnect } from 'use-wagmi/connectors'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { metaKeep } from '@reslear/metakeep-wagmi-connector'
 
@@ -14,11 +13,11 @@ export const config = createConfig({
     [mainnet.id]: http(),
     [polygon.id]: http(),
   },
+  // multiInjectedProviderDiscovery: false,
   connectors: [
     // walletConnect({
     //   projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
     // }),
-    injected(),
     metaKeep({
       appId: import.meta.env.VITE_META_KEEP_APP_ID,
     }),
@@ -27,7 +26,7 @@ export const config = createConfig({
 
 const app = createApp(App)
 
-app.use(VueQueryPlugin)
+app.use(VueQueryPlugin, {})
 app.use(UseWagmiPlugin, { config })
 app.mount('#app')
 
