@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.3
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.2...v0.2.3)
+
+### 🩹 Fixes
+
+- Exports for publint ([b6305c8](https://github.com/reslear/metakeep-wagmi-connector/commit/b6305c8))
+
+### 🏡 Chore
+
+- Bump `wagmi/core` [skip ci] ([25817cb](https://github.com/reslear/metakeep-wagmi-connector/commit/25817cb))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.2.2
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.1...v0.2.2)
