@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.4
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.3...v0.2.4)
+
+### 🩹 Fixes
+
+- Complete SIWE integration ([e26d457](https://github.com/reslear/metakeep-wagmi-connector/commit/e26d457))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.2.3
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.2...v0.2.3)
