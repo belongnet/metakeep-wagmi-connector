@@ -46,7 +46,7 @@ export function initWeb3Modal() {
 
     if (!session) throw new Error('Failed to get session!')
 
-    const { address, chainId } = session
+    const { address, chainId } = session as unknown as SIWESession
 
     return { address, chainId }
 
