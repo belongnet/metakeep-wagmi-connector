@@ -2,8 +2,6 @@
 
 [![Version](https://img.shields.io/npm/v/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
 [![Downloads](https://img.shields.io/npm/dt/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
-[![License](https://img.shields.io/npm/l/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
-
 [publint](https://publint.dev/@reslear/metakeep-wagmi-connector) | 
 [arethetypeswrong](https://arethetypeswrong.github.io/?p=%40reslear%2Fmetakeep-wagmi-connector)
 

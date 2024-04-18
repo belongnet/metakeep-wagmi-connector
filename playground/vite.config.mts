@@ -20,7 +20,6 @@ export default defineConfig({
     // https://github.com/WalletConnect/web3modal/issues/2159
     externalize({
       externals: [
-        '@web3modal/siwe',
         '@walletconnect/modal',
         '@metamask/sdk',
         '@coinbase/wallet-sdk',
