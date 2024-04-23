@@ -6,6 +6,8 @@ on:
     # - v*
     branches:
       - main
+    paths:
+      - 'src/**'
   workflow_dispatch:
 
 permissions:
