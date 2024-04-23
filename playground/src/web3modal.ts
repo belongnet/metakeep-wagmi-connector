@@ -4,14 +4,12 @@ import type {
   SIWESession,
   SIWEVerifyMessageArgs,
 } from '@web3modal/siwe'
-import { createWeb3Modal } from '@web3modal/wagmi'
-import { useConfig } from 'use-wagmi'
-import { provide } from 'vue'
+import { createWeb3Modal } from '@web3modal/wagmi/vue'
 import { prepareMessage } from 'simple-siwe'
 import { useApi } from './api'
+import { Config } from 'use-wagmi'
 
-export function initWeb3Modal() {
-  const config = useConfig()
+export function initWeb3Modal({ config }: { config: Config }) {
   const api = useApi()
 
   async function getNonce(address?: string) {
@@ -96,5 +94,7 @@ export function initWeb3Modal() {
     siweConfig,
   })
 
-  provide('web3modal', web3modal)
+  return {
+    web3modal,
+  }
 }

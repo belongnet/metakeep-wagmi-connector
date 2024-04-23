@@ -11,8 +11,6 @@ import MetaKeepSdk from './components/MetaKeepSdk.vue'
 import SignMessage from './components/SignMessage.vue'
 import Web3Modal from './components/Web3Modal.vue'
 import { initWeb3Modal } from './web3modal'
-
-initWeb3Modal()
 </script>
 
 <template>
@@ -29,7 +27,7 @@ initWeb3Modal()
     <Account />
     <SwitchChain />
     <section>
-      <h2>Sign Message</h2>
+      <h3>Sign Message</h3>
       <SignMessage />
     </section>
     <section>
