@@ -7,26 +7,25 @@ import type {
 import { createWeb3Modal } from '@web3modal/wagmi'
 import { useConfig } from 'use-wagmi'
 import { provide } from 'vue'
-import { prepareMessage, verify, generateNonce } from 'simple-siwe'
+import { prepareMessage } from 'simple-siwe'
+import { useApi } from './api'
 
 export function initWeb3Modal() {
   const config = useConfig()
+  const api = useApi()
 
   async function getNonce(address?: string) {
-    // backend call to get nonce
-    return Promise.resolve(generateNonce() as string)
-  }
+    console.log('web3modal SIWE: getting nonce', { address })
 
-  async function signOut() {
-    // backend call to sign out
+    //Backend call to get nonce
+    const { nonce } = await api.getNonce()
 
-    console.log('web3modal SIWE: signing out')
-    return true
+    return nonce
   }
 
   /* Function that creates a SIWE message */
   function createMessage({ nonce, address, chainId }: SIWECreateMessageArgs) {
-    return prepareMessage({
+    const message = prepareMessage({
       version: '1',
       domain: window.location.host,
       uri: window.location.origin,
@@ -35,32 +34,37 @@ export function initWeb3Modal() {
       nonce,
       statement: 'Sign in With Ethereum.',
     })
+
+    console.log('web3modal SIWE: created message', {
+      nonce,
+      address,
+      chainId,
+      message,
+    })
+
+    return message
   }
 
   /* Function that returns the user's session */
   async function getSession(): Promise<SIWESession | null> {
-    const session = {
-      address: '0x1234567890',
-      chainId: 1,
-    } //await getSession()
+    console.log('web3modal SIWE: getting session')
 
-    if (!session) throw new Error('Failed to get session!')
-
-    const { address, chainId } = session as unknown as SIWESession
-
-    return { address, chainId }
-
-    return null
+    try {
+      const session = await api.getSession()
+      return session
+    } catch (error) {
+      throw new Error('Failed to get session!', {
+        cause: error,
+      })
+    }
   }
 
   /* Use your SIWE server to verify if the message and the signature are valid */
   async function verifyMessage({ message, signature }: SIWEVerifyMessageArgs) {
+    console.log('web3modal SIWE: verifying message', { message, signature })
+
     try {
-      console.log({ message, signature })
-
-      // backend call to verify message
-      const isValid = await verify({ message, signature })
-
+      const { isValid } = await api.verifyMessage({ message, signature })
       return isValid
     } catch (error) {
       console.log(error)
@@ -81,7 +85,7 @@ export function initWeb3Modal() {
     getNonce,
     getSession,
     verifyMessage,
-    signOut,
+    signOut: async () => true,
   })
 
   const web3modal = createWeb3Modal({

@@ -3,6 +3,8 @@
 <template>
   <div class="center">
     <w3m-button />
+
+    <w3m-network-button />
   </div>
 </template>
 
@@ -11,5 +13,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 </style>

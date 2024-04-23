@@ -27,9 +27,14 @@ initWeb3Modal()
     </section>
     <Account />
     <SwitchChain />
-    <SignMessage />
-    <h2>Web3Modal</h2>
-    <Web3Modal />
+    <section>
+      <h2>Sign Message</h2>
+      <SignMessage />
+    </section>
+    <section>
+      <h2>Web3Modal</h2>
+      <Web3Modal />
+    </section>
     <section>
       <h2>MetaKeep SDK</h2>
       <MetaKeepSdk />

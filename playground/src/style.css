@@ -48,11 +48,14 @@ body {
     grid-area: main;
 
     display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
     padding: 1rem;
     box-sizing: border-box;
+
+    > section {
+      overflow: hidden;
+    }
   }
 
   > footer {
