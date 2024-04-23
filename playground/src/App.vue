@@ -17,7 +17,8 @@ initWeb3Modal()
 
 <template>
   <header>
-    <h1>MetaKeep Playground</h1>
+    <h1 style="margin-bottom: 0">MetaKeep wagmi Playground</h1>
+    <p style="margin: 0">with Web3modal and Siwe</p>
   </header>
 
   <main class="container">

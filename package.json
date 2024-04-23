@@ -1,7 +1,7 @@
 {
   "name": "@reslear/metakeep-wagmi-connector",
   "version": "0.2.4",
-  "description": "A connector for Metakeep and Wagmi",
+  "description": "Metakeep connector for Wagmi",
   "keywords": [
     "metakeep",
     "wagmi",
