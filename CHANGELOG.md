@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.2.5
+
+[compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.4...v0.2.5)
+
+### 🩹 Fixes
+
+- Type [skip ci] ([ad31718](https://github.com/reslear/metakeep-wagmi-connector/commit/ad31718))
+- Description ([91938d5](https://github.com/reslear/metakeep-wagmi-connector/commit/91938d5))
+- **play:** Script setup ([ab42dee](https://github.com/reslear/metakeep-wagmi-connector/commit/ab42dee))
+- Default import `metakeep` ([c159861](https://github.com/reslear/metakeep-wagmi-connector/commit/c159861))
+
+### 💅 Refactors
+
+- **play:** Session example ([a733565](https://github.com/reslear/metakeep-wagmi-connector/commit/a733565))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.2.4
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.3...v0.2.4)
