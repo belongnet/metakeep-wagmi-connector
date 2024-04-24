@@ -2,15 +2,16 @@
 
 [![Version](https://img.shields.io/npm/v/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
 [![Downloads](https://img.shields.io/npm/dt/@reslear/metakeep-wagmi-connector)](https://www.npmjs.com/package/@reslear/metakeep-wagmi-connector)
-[publint](https://publint.dev/@reslear/metakeep-wagmi-connector) | 
-[arethetypeswrong](https://arethetypeswrong.github.io/?p=%40reslear%2Fmetakeep-wagmi-connector)
+[![install size](https://packagephobia.com/badge?p=@reslear/metakeep-wagmi-connector@0.2.5)](https://packagephobia.com/result?p=@reslear/metakeep-wagmi-connector@0.2.5)
 
+Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform. 
 
-Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform provided by PassbirdCo. 
-
-Features:
-- Connects with Wagmi v2 (React/Core/Vue [use-wagmi](https://github.com/unicape/use-wagmi))
-- Supports (Web3Modal) [web3-react](https://docs.walletconnect.com/web3modal/about)
+**Features:**
+- ⚙ Connects with [wagmi v2](https://wagmi.sh/) (React/Core) or [use-wagmi](https://github.com/unicape/use-wagmi) (Vue)
+- 🔮 Supports [Web3Modal](https://docs.walletconnect.com/web3modal/about)
+- 📐 Session validations and caching 
+- 💡 Lightweight ~26kB
+- ✍️ TypeScript/ESM/Dynamic import
 
 ## Installation
 
