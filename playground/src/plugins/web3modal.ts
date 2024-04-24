@@ -2,7 +2,6 @@ import type { Plugin } from 'vue'
 
 import { initWeb3Modal } from '../web3modal'
 
-// plugins/i18n.js
 export const Web3modalPlugin: Plugin = {
   install: (app, options) => {
     const { config } = options
