@@ -111,7 +111,9 @@ export function metaKeep(parameters: MetaKeepParameters) {
         (await config.storage?.getItem('recentConnectorId')) === this.id
 
       if (!provider_) {
-        const { MetaKeep } = await import('metakeep')
+        const { MetaKeep } = await import('metakeep').then((m) =>
+          m.MetaKeep ? m : m.default
+        )
 
         const rpcNodeUrls = Object.fromEntries(
           config.chains.map((chain) => [

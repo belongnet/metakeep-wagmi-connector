@@ -32,7 +32,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@reslear/metakeep-wagmi-connector': resolve('../src/index.ts'),
-      metakeep: resolve('../node_modules/metakeep/lib/index.js'),
+      //'@reslear/metakeep-wagmi-connector': resolve('../dist/esm/index.js'),
+      //metakeep: resolve('../node_modules/metakeep/lib/index.js'),
     },
   },
 
@@ -49,5 +50,9 @@ export default defineConfig({
         },
       },
     },
+  },
+
+  optimizeDeps: {
+    include: [],
   },
 })
