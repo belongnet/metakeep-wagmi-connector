@@ -13,7 +13,14 @@ import {
   createConnector,
 } from '@wagmi/core'
 
-export type MetaKeepParameters = ConstructorParameters<typeof MetaKeep>[0]
+import type { Connector } from '@wagmi/core'
+
+export type MetaKeepParameters = Omit<
+  ConstructorParameters<typeof MetaKeep>[0],
+  'user'
+> & {
+  user?: { email: string }
+}
 
 export type MetaKeepProvider = {
   chainId: number
@@ -27,19 +34,23 @@ export type MetaKeepProvider = {
 
 const SESSION_TIMEOUT = 3 * 24 * 60 * 60 * 1000
 
+export type StorageItem = {
+  metakeep: {
+    email: string
+    accounts?: Address[]
+    last?: string
+  }
+  store: {
+    state: { chainId: number }
+  }
+  'wagmi.recentConnectorId': string
+}
+
+metaKeep.type = 'metakeep' as const
 export function metaKeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
-  type Properties = {}
-  type StorageItem = {
-    metakeep: {
-      email: string
-      accounts: Address[]
-      last: string
-    }
-    store: {
-      state: { chainId: number }
-    }
-    'wagmi.recentConnectorId': string
+  type Properties = {
+    setUser(args: { email: string }): Promise<void>
   }
 
   let provider_: Provider | undefined
@@ -126,7 +137,9 @@ export function metaKeep(parameters: MetaKeepParameters) {
           appId: parameters.appId,
           rpcNodeUrls: parameters.rpcNodeUrls ?? rpcNodeUrls,
           environment: parameters.environment,
-          user: session?.email ?? parameters.user?.email,
+          user: {
+            email: session?.email ?? parameters.user?.email,
+          },
           chainId: chainId ?? store?.state?.chainId ?? config.chains?.[0]?.id,
         })
 
@@ -136,7 +149,9 @@ export function metaKeep(parameters: MetaKeepParameters) {
           // Check if connector was recently connected
           isRecentlyConnected &&
           // Check if session exists
-          session &&
+          session?.last &&
+          session?.accounts?.length &&
+          session?.email &&
           // Check if session is not expired
           Date.now() - Date.parse(session.last) < SESSION_TIMEOUT
         ) {
@@ -226,5 +241,23 @@ export function metaKeep(parameters: MetaKeepParameters) {
     async onDisconnect(_error) {
       config.emitter.emit('disconnect')
     },
+
+    async setUser({ email }: { email: string }) {
+      const provider = await this.getProvider()
+      const session = await config.storage?.getItem('metakeep')
+
+      if (!provider) return
+
+      provider.setUser({
+        email,
+      })
+
+      await config.storage?.setItem('metakeep', {
+        ...session,
+        email,
+      })
+    },
   }))
 }
+
+export type MetaKeepConnector = ReturnType<ReturnType<typeof metaKeep>>

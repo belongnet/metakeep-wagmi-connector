@@ -4,6 +4,7 @@ import { mainnet, polygon } from 'use-wagmi/chains'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { metaKeep } from '@reslear/metakeep-wagmi-connector'
 import { Web3modalPlugin } from './plugins/web3modal.js'
+import { vueQueryOptions } from './config/query.js'
 
 import './style.css'
 import App from './App.vue'
@@ -27,7 +28,7 @@ export const config = createConfig({
 
 const app = createApp(App)
 
-app.use(VueQueryPlugin, {})
+app.use(VueQueryPlugin, vueQueryOptions)
 app.use(UseWagmiPlugin, { config })
 app.use(Web3modalPlugin, { config })
 

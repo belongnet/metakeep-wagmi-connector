@@ -29,6 +29,7 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "dev": "cd playground && pnpm dev",
     "build": "pnpm run clean && pnpm run build:esm+types",
     "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
@@ -48,7 +49,8 @@
     }
   },
   "devDependencies": {
-    "@wagmi/core": "2.6.17",
+    "viem": "^2.10.1",
+    "@wagmi/core": "2.9.1",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },

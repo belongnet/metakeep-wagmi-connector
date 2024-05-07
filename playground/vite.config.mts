@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'node:path'
 import Inspect from 'vite-plugin-inspect'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
-import externalize from 'vite-plugin-externalize-dependencies'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,16 +15,6 @@ export default defineConfig({
       },
     }),
     Inspect(),
-
-    // https://github.com/WalletConnect/web3modal/issues/2159
-    externalize({
-      externals: [
-        '@walletconnect/modal',
-        '@metamask/sdk',
-        '@coinbase/wallet-sdk',
-      ],
-    }),
-
     nodePolyfills(),
   ],
 

@@ -10,25 +10,26 @@
   },
   "dependencies": {
     "@reslear/metakeep-wagmi-connector": "workspace:*",
-    "@tanstack/vue-query": "^5.32.0",
+    "@tanstack/query-persist-client-core": "^5.35.1",
+    "@tanstack/query-sync-storage-persister": "^5.35.1",
+    "@tanstack/vue-query": "^5.35.1",
     "@vueuse/core": "^10.9.0",
-    "@wagmi/core": "2.6.17",
+    "@wagmi/core": "2.9.1",
     "@web3modal/siwe": "^4.1.11",
     "@web3modal/wagmi": "^4.1.11",
     "simple-siwe": "^0.1.4",
     "truncate-eth-address": "^1.0.2",
-    "use-wagmi": "1.3.11",
-    "viem": "^2.9.26",
-    "vue": "^3.4.25"
+    "use-wagmi": "1.5.0",
+    "viem": "^2.10.1",
+    "vue": "^3.4.27"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.10",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vite-plugin-externalize-dependencies": "^0.12.0",
+    "vite": "^5.2.11",
     "vite-plugin-inspect": "^0.8.4",
     "vite-plugin-node-polyfills": "^0.21.0",
-    "vue-tsc": "^2.0.14"
+    "vue-tsc": "^2.0.16"
   }
 }

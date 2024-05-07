@@ -7,6 +7,7 @@ export function useSession() {
     siwe?: SiweMessage
     message?: string
     signedMessage?: string
+    email?: string
   } | null>('siwe-session', null, undefined, {
     mergeDefaults: true,
     deep: true,
