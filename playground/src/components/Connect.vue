@@ -2,7 +2,7 @@
 import { Connector, useChainId, useConnect, useConnections } from 'use-wagmi'
 import { computed } from 'vue'
 import { useSession } from '../use-session'
-import type { MetaKeepConnector } from '@reslear/metakeep-wagmi-connector'
+import type { MetaKeepConnector } from '@belongnet/metakeep-wagmi-connector'
 
 const { session } = useSession()
 

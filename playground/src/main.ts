@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { http, createConfig, UseWagmiPlugin } from 'use-wagmi'
 import { mainnet, polygon } from 'use-wagmi/chains'
 import { VueQueryPlugin } from '@tanstack/vue-query'
-import { metaKeep } from '@reslear/metakeep-wagmi-connector'
+import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
 import { Web3modalPlugin } from './plugins/web3modal.js'
 import { vueQueryOptions } from './config/query.js'
 
