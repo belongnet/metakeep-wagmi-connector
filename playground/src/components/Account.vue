@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import truncateEthAddress from 'truncate-eth-address'
-import { useAccount, useDisconnect } from 'use-wagmi'
+import { useAccount, useDisconnect } from '@wagmi/vue'
 
 const { address, chainId, status } = useAccount()
 const { disconnect } = useDisconnect()

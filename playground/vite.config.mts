@@ -31,7 +31,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vue: ['vue', '@vueuse/core'],
-          wevm: ['viem', '@wagmi/core', 'truncate-eth-address', 'use-wagmi'],
+          wevm: ['viem', '@wagmi/core', 'truncate-eth-address', '@wagmi/vue'],
           metakeep: ['metakeep'],
           'metakeep-wagmi-connector': ['@belongnet/metakeep-wagmi-connector'],
           web3modal: ['@web3modal/wagmi', '@web3modal/siwe'],

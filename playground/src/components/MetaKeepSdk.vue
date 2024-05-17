@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAccount } from 'use-wagmi'
+import { useAccount } from '@wagmi/vue'
 import type { MetaKeepProvider } from '@belongnet/metakeep-wagmi-connector'
 import { ref } from 'vue'
 
