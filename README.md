@@ -1,7 +1,7 @@
 # metakeep-wagmi-connector
 
 [![Version](https://img.shields.io/npm/v/@belongnet/metakeep-wagmi-connector)](https://www.npmjs.com/package/@belongnet/metakeep-wagmi-connector)
-[![Downloads](https://img.shields.io/npm/dt/@belongnet/metakeep-wagmi-connector)](https://www.npmjs.com/package/@belongnet/metakeep-wagmi-connector)
+[![Downloads](https://img.shields.io/npm/dw/@belongnet/metakeep-wagmi-connector)](https://www.npmjs.com/package/@belongnet/metakeep-wagmi-connector)
 [![install size](https://packagephobia.com/badge?p=@belongnet/metakeep-wagmi-connector)](https://packagephobia.com/result?p=@belongnet/metakeep-wagmi-connector)
 
 Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform.
