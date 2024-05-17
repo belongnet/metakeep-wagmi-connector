@@ -20,8 +20,8 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@reslear/metakeep-wagmi-connector': resolve('../src/index.ts'),
-      //'@reslear/metakeep-wagmi-connector': resolve('../dist/esm/index.js'),
+      '@belongnet/metakeep-wagmi-connector': resolve('../src/index.ts'),
+      //'@belongnet/metakeep-wagmi-connector': resolve('../dist/esm/index.js'),
       //metakeep: resolve('../node_modules/metakeep/lib/index.js'),
     },
   },
@@ -31,9 +31,9 @@ export default defineConfig({
       output: {
         manualChunks: {
           vue: ['vue', '@vueuse/core'],
-          wevm: ['viem', '@wagmi/core', 'truncate-eth-address', 'use-wagmi'],
+          wevm: ['viem', '@wagmi/core', 'truncate-eth-address', '@wagmi/vue'],
           metakeep: ['metakeep'],
-          'metakeep-wagmi-connector': ['@reslear/metakeep-wagmi-connector'],
+          'metakeep-wagmi-connector': ['@belongnet/metakeep-wagmi-connector'],
           web3modal: ['@web3modal/wagmi', '@web3modal/siwe'],
           'vue-query': ['@tanstack/vue-query'],
         },

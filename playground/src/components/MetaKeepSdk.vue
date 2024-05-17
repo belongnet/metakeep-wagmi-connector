@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAccount } from 'use-wagmi'
-import type { MetaKeepProvider } from '@reslear/metakeep-wagmi-connector'
+import { useAccount } from '@wagmi/vue'
+import type { MetaKeepProvider } from '@belongnet/metakeep-wagmi-connector'
 import { ref } from 'vue'
 
 const { connector } = useAccount()

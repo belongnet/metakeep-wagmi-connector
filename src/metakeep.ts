@@ -12,15 +12,13 @@ import {
   ProviderNotFoundError,
   createConnector,
 } from '@wagmi/core'
+import type { Evaluate } from '@wagmi/core/internal'
 
-import type { Connector } from '@wagmi/core'
-
-export type MetaKeepParameters = Omit<
-  ConstructorParameters<typeof MetaKeep>[0],
-  'user'
-> & {
-  user?: { email: string }
-}
+export type MetaKeepParameters = Evaluate<
+  Omit<ConstructorParameters<typeof MetaKeep>[0], 'user'> & {
+    user?: { email: string }
+  }
+>
 
 export type MetaKeepProvider = {
   chainId: number
@@ -47,6 +45,7 @@ export type StorageItem = {
 }
 
 metaKeep.type = 'metakeep' as const
+
 export function metaKeep(parameters: MetaKeepParameters) {
   type Provider = MetaKeepProvider
   type Properties = {

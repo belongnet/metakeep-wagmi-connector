@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { Connector, useChainId, useConnect, useConnections } from 'use-wagmi'
+import { Connector, useChainId, useConnect, useConnections } from '@wagmi/vue'
 import { computed } from 'vue'
 import { useSession } from '../use-session'
-import type { MetaKeepConnector } from '@reslear/metakeep-wagmi-connector'
+import type { MetaKeepConnector } from '@belongnet/metakeep-wagmi-connector'
 
 const { session } = useSession()
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useSignMessage } from 'use-wagmi'
+import { useSignMessage } from '@wagmi/vue'
 
 import { useSession } from '../use-session'
 
