@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.3.0
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.2.6...v0.3.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Move to `belongnet` & adopt @wagmi/vue v2.9 ([#6](https://github.com/belongnet/metakeep-wagmi-connector/pull/6))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Move to `belongnet` & adopt @wagmi/vue v2.9 ([#6](https://github.com/belongnet/metakeep-wagmi-connector/pull/6))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.2.6
 
 [compare changes](https://github.com/reslear/metakeep-wagmi-connector/compare/v0.2.5...v0.2.6)
