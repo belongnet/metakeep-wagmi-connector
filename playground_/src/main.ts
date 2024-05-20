@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { VueQueryPlugin } from '@tanstack/vue-query'
-import { Web3modalPlugin } from './plugins/web3modal.js'
+import { Web3modalPlugin } from '../../playground/plugins/web3modal.js'
 import { queryClient } from './config/query.js'
 import { config } from './config/wagmi.js'
 import { WagmiPlugin } from '@wagmi/vue'

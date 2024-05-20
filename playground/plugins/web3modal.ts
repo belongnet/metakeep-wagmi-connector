@@ -1,6 +1,6 @@
 import type { Plugin } from 'vue'
 
-import { initWeb3Modal } from '../web3modal'
+import { initWeb3Modal } from '../../playground_/src/web3modal'
 
 export const Web3modalPlugin: Plugin = {
   install: (app, options) => {
