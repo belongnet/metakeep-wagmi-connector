@@ -1,5 +1,5 @@
 import { generateNonce, parseMessage, verify } from 'simple-siwe'
-import { useSession } from './use-session'
+import { useSession } from '../composables/use-session'
 
 export function useApi() {
   const { session } = useSession()

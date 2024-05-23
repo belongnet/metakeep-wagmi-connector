@@ -2,12 +2,6 @@ import { mainnet, polygon } from '@wagmi/vue/chains'
 import { createConfig, http } from '@wagmi/vue'
 import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
 
-declare module '@wagmi/vue' {
-  interface Register {
-    config: typeof config
-  }
-}
-
 export const config = createConfig({
   chains: [mainnet, polygon],
   transports: {
@@ -24,3 +18,9 @@ export const config = createConfig({
     }),
   ],
 })
+
+declare module '@wagmi/vue' {
+  interface Register {
+    config: typeof config
+  }
+}

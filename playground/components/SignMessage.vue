@@ -1,8 +1,5 @@
 <script lang="ts" setup>
 import { useSignMessage } from '@wagmi/vue'
-
-import { useSession } from '../use-session'
-
 const { data, signMessageAsync } = useSignMessage()
 
 const { session } = useSession()

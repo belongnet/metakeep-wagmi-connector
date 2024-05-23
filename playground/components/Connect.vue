@@ -1,8 +1,12 @@
 <script lang="ts" setup>
-import { Connector, useChainId, useConnect, useConnections } from '@wagmi/vue'
-import { computed } from 'vue'
-import { useSession } from '../use-session'
+import type { Connector } from '@wagmi/core'
 import type { MetaKeepConnector } from '@belongnet/metakeep-wagmi-connector'
+import {
+  useChainId,
+  useConnect,
+  useConnections,
+  useConnectors,
+} from '@wagmi/vue'
 
 const { session } = useSession()
 
@@ -17,8 +21,9 @@ const metakeepEmail = computed({
 })
 
 const chainId = useChainId()
-const { connectors, connect, status, error } = useConnect()
+const { connect, status, error } = useConnect()
 const connections = useConnections()
+const connectors = useConnectors()
 
 const connectionIds = computed(() => {
   return connections.value.map((connection) => connection.connector.uid)

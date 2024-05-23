@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useAccount } from '@wagmi/vue'
 import type { MetaKeepProvider } from '@belongnet/metakeep-wagmi-connector'
-import { ref } from 'vue'
-
+import { useAccount } from '@wagmi/vue'
 const { connector } = useAccount()
 
 const email = ref('example@mail.com')

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 // https://github.com/WalletConnect/web3modal/blob/V4/examples/vue-wagmi/src/App.vue
-
 import { useWeb3Modal } from '@web3modal/wagmi/vue'
 
 const modal = useWeb3Modal()

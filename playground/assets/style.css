@@ -30,7 +30,7 @@ body {
   overflow-wrap: break-word;
 }
 
-#app {
+#__nuxt {
   width: 100%;
   display: grid;
   grid-template-areas:

@@ -1,12 +1,7 @@
-import type { Plugin } from 'vue'
+import { initWeb3Modal } from '../config/web3modal'
+import { config } from '../config/wagmi'
 
-import { initWeb3Modal } from '../../playground_/src/web3modal'
-
-export const Web3modalPlugin: Plugin = {
-  install: (app, options) => {
-    const { config } = options
-    const { web3modal } = initWeb3Modal({ config })
-
-    app.provide('web3modal', web3modal)
-  },
-}
+export default defineNuxtPlugin((nuxtApp) => {
+  const { web3modal } = initWeb3Modal({ config })
+  nuxtApp.vueApp.provide('web3modal', web3modal)
+})

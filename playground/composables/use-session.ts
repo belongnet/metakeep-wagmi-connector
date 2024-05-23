@@ -1,5 +1,5 @@
-import { StorageSerializers, useStorage } from '@vueuse/core'
 import { SiweMessage } from 'simple-siwe'
+import { StorageSerializers, useStorage } from '@vueuse/core'
 
 export function useSession() {
   const session = useStorage<{

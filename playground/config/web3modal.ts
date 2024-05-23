@@ -6,8 +6,8 @@ import type {
 } from '@web3modal/siwe'
 import { createWeb3Modal } from '@web3modal/wagmi/vue'
 import { prepareMessage } from 'simple-siwe'
-import { useApi } from './api'
-import { Config } from '@wagmi/core'
+import { useApi } from '../services/api'
+import type { Config } from '@wagmi/core'
 
 export function initWeb3Modal({ config }: { config: Config }) {
   const api = useApi()
