@@ -2,6 +2,8 @@ import { mainnet, polygon } from '@wagmi/vue/chains'
 import { createConfig, http } from '@wagmi/vue'
 import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
 
+const { appId } = useSession()
+
 export const config = createConfig({
   chains: [mainnet, polygon],
   transports: {
@@ -14,7 +16,7 @@ export const config = createConfig({
     //   projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
     // }),
     metaKeep({
-      appId: import.meta.env.VITE_META_KEEP_APP_ID,
+      appId: appId.value,
     }),
   ],
 })

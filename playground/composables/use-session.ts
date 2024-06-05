@@ -1,4 +1,4 @@
-import { SiweMessage } from 'simple-siwe'
+import type { SiweMessage } from 'viem/siwe'
 import { StorageSerializers, useStorage } from '@vueuse/core'
 
 export function useSession() {
@@ -14,7 +14,17 @@ export function useSession() {
     serializer: StorageSerializers.object,
   })
 
+  const appId = useStorage(
+    'meta-keep-app-id',
+    (import.meta.env.VITE_META_KEEP_APP_ID as string) || '',
+    undefined,
+    {
+      mergeDefaults: true,
+    }
+  )
+
   return {
+    appId,
     session,
   }
 }

@@ -1,11 +1,19 @@
-import { generateNonce, parseMessage, verify } from 'simple-siwe'
+import {
+  generateSiweNonce,
+  verifySiweMessage,
+  parseSiweMessage,
+  type SiweMessage,
+} from 'viem/siwe'
 import { useSession } from '../composables/use-session'
+import { createClient, http } from 'viem'
+import { mainnet } from 'viem/chains'
+import type { Hex } from 'viem'
 
 export function useApi() {
   const { session } = useSession()
 
   async function getNonce() {
-    const nonce = await Promise.resolve(generateNonce())
+    const nonce = await Promise.resolve(generateSiweNonce())
 
     session.value = {
       nonce,
@@ -27,19 +35,21 @@ export function useApi() {
     }
   }
 
-  async function verifyMessage({
+  async function signIn({
     message,
     signature,
   }: {
     message: string
-    signature: string
+    signature: Hex
   }) {
     try {
       const nonce = session.value?.nonce
 
       if (!nonce) throw new Error('Nonce not found')
 
-      const isValid = await verify({
+      const client = createClient({ chain: mainnet, transport: http() })
+
+      const isValid = await verifySiweMessage(client, {
         message,
         signature,
 
@@ -49,9 +59,11 @@ export function useApi() {
 
       if (!isValid) throw new Error('Failed to verify message!')
 
+      const siwe = parseSiweMessage(message)!
+
       session.value = {
         nonce,
-        siwe: parseMessage(message),
+        siwe: siwe as SiweMessage,
       }
 
       return {
@@ -71,6 +83,6 @@ export function useApi() {
     session,
     getSession,
     getNonce,
-    verifyMessage,
+    signIn,
   }
 }
