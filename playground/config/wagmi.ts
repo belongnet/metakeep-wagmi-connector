@@ -1,8 +1,9 @@
 import { mainnet, polygon } from '@wagmi/vue/chains'
 import { createConfig, http } from '@wagmi/vue'
 import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
+import { walletConnect } from '@wagmi/vue/connectors'
 
-const { appId } = useSession()
+const { appId, projectId } = useSession()
 
 export const config = createConfig({
   chains: [mainnet, polygon],
@@ -12,9 +13,9 @@ export const config = createConfig({
   },
   // multiInjectedProviderDiscovery: false,
   connectors: [
-    // walletConnect({
-    //   projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
-    // }),
+    walletConnect({
+      projectId: projectId.value,
+    }),
     metaKeep({
       appId: appId.value,
     }),

@@ -1,18 +1,20 @@
 <script setup lang="ts">
-const props = defineProps<{
-  modelValue?: boolean
-}>()
-
-const session = useSession()
-const appId = ref(toValue(session.appId))
+const { appId: _appId, projectId: _projectId, defaults } = useSession()
+const appId = ref(toValue(_appId))
+const projectId = ref(toValue(_projectId))
 
 function setAppId() {
-  if (appId.value === session.appId.value) return
-  session.appId.value = appId.value
+  _appId.value = appId.value
+  _projectId.value = projectId.value
 
   setTimeout(() => {
     window.location.reload()
-  }, 300)
+  }, 10)
+}
+
+function setDefault() {
+  appId.value = defaults.appId
+  projectId.value = defaults.projectId
 }
 </script>
 
@@ -23,7 +25,7 @@ function setAppId() {
   </header>
 
   <main class="container">
-    <template v-if="appId">
+    <template v-if="_appId && _projectId">
       <section>
         <h2>Wagmi</h2>
         <Connect />
@@ -45,8 +47,15 @@ function setAppId() {
     </template>
 
     <section>
-      <h2>Enter Metakeep <b>projectId</b></h2>
-      <input v-model="appId" />
+      <h2>Set keys</h2>
+      <div>Metakeep appId: <input v-model="appId" /></div>
+
+      <div>
+        WalletConnect projectId:
+        <input v-model="projectId" />
+      </div>
+
+      <a href class="link" @click.prevent="setDefault()">default</a>
       <button @click="() => setAppId()">Set</button>
     </section>
   </main>

@@ -7,7 +7,7 @@ import type { Hex } from 'viem'
 
 export function initWeb3Modal({ config }: { config: Config }) {
   const api = useApi()
-  const { session } = useSession()
+  const { session, projectId } = useSession()
 
   async function signIn() {
     // backend call to sign in
@@ -65,13 +65,15 @@ export function initWeb3Modal({ config }: { config: Config }) {
     signOut: async () => true,
   })
 
-  const web3modal = createWeb3Modal({
-    wagmiConfig: config,
-    projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
-    enableAnalytics: true, // Optional - defaults to your Cloud configuration
-    enableOnramp: true, // Optional - false as default
-    siweConfig,
-  })
+  const web3modal = projectId.value
+    ? createWeb3Modal({
+        wagmiConfig: config,
+        projectId: projectId.value,
+        enableAnalytics: true, // Optional - defaults to your Cloud configuration
+        enableOnramp: true, // Optional - false as default
+        siweConfig,
+      })
+    : null
 
   return {
     web3modal,

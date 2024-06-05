@@ -14,17 +14,18 @@ export function useSession() {
     serializer: StorageSerializers.object,
   })
 
-  const appId = useStorage(
-    'meta-keep-app-id',
-    (import.meta.env.VITE_META_KEEP_APP_ID as string) || '',
-    undefined,
-    {
-      mergeDefaults: true,
-    }
-  )
+  const defaults = {
+    appId: import.meta.env.VITE_META_KEEP_APP_ID,
+    projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID,
+  }
+
+  const appId = useStorage('meta-keep-app-id', defaults.appId)
+  const projectId = useStorage('wc-project-id', defaults.projectId)
 
   return {
+    defaults,
     appId,
+    projectId,
     session,
   }
 }
