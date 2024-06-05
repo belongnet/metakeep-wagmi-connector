@@ -6,6 +6,8 @@
 
 Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz](https://metakeep.xyz/) platform.
 
+- [👀 Demo](https://belongnet.github.io/metakeep-wagmi-connector/)
+
 **Features:**
 
 - ⚙ Connects with [wagmi v2](https://wagmi.sh/)
