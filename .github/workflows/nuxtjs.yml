@@ -26,11 +26,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      # Pick your own package manager and build script
-      - run: cd ./playground
-
       - name: Install dependencies
         run: pnpm install
+
+      # Pick your own package manager and build script
+      - run: cd ./playground
 
       - run: npx nuxt build --preset github_pages
         env:
