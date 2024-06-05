@@ -33,6 +33,8 @@ jobs:
         env:
           NITRO_PRESET: github_pages
           NUXT_APP_BASE_URL: /metakeep-wagmi-connector/
+          VITE_WALLETCONNECT_PROJECT_ID: ${{ secrets.VITE_WALLETCONNECT_PROJECT_ID }}
+          VITE_META_KEEP_APP_ID: ${{ secrets.VITE_META_KEEP_APP_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
