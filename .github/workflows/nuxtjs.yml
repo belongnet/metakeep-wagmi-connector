@@ -22,15 +22,18 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      # Pick your own package manager and build script
-      - run: cd ./playground
-
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm build --preset github_pages
+      - name: Build lib
+        run: pnpm build
+
+      - name: Build playground
+        run: cd playground && pnpm build
         env:
+          NITRO_PRESET: github_pages
           NUXT_APP_BASE_URL: /metakeep-wagmi-connector/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
