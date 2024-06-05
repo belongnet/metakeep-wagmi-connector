@@ -10,15 +10,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+
     steps:
-      - uses: actions/checkout@v3
-      - run: corepack enable
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
       # Pick your own package manager and build script
       - run: cd ./playground
-      - run: pnpm install
+
+      - name: Install dependencies
+        run: pnpm install
+
       - run: npx nuxt build --preset github_pages
         env:
           NUXT_APP_BASE_URL: /metakeep-wagmi-connector/
