@@ -32,7 +32,7 @@ jobs:
       # Pick your own package manager and build script
       - run: cd ./playground
 
-      - run: npx nuxt build --preset github_pages
+      - run: pnpm nuxt build --preset github_pages
         env:
           NUXT_APP_BASE_URL: /metakeep-wagmi-connector/
       - name: Upload artifact
