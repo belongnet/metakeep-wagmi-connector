@@ -13,6 +13,7 @@ Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz
 - ⚙ Connects with [wagmi v2](https://wagmi.sh/)
 - 🔮 Supports [Web3Modal](https://docs.walletconnect.com/web3modal/about)
 - 📐 Session validations and caching
+- 🔐 Supports One-Click Auth / SIWE
 - 💡 Lightweight ~26kB
 - ✍️ TypeScript/ESM/Dynamic import
 
