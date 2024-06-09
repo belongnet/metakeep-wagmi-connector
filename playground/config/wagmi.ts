@@ -1,7 +1,7 @@
 import { mainnet, polygon } from '@wagmi/vue/chains'
 import { createConfig, http } from '@wagmi/vue'
 import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
-import { walletConnect } from '@wagmi/vue/connectors'
+import { injected, walletConnect } from '@wagmi/vue/connectors'
 
 const { appId, projectId } = useSession()
 
@@ -15,10 +15,12 @@ export const config = createConfig({
   connectors: [
     walletConnect({
       projectId: projectId.value,
+      showQrModal: false,
     }),
     metaKeep({
       appId: appId.value,
     }),
+    injected(),
   ],
 })
 

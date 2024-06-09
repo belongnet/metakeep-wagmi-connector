@@ -79,10 +79,17 @@ export function useApi() {
     }
   }
 
+  async function signOut() {
+    session.value = null
+
+    return true
+  }
+
   return {
     session,
     getSession,
     getNonce,
     signIn,
+    signOut,
   }
 }

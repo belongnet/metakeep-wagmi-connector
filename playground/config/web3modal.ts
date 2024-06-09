@@ -1,13 +1,16 @@
 import { createSIWEConfig, formatMessage } from '@web3modal/siwe'
 import type { SIWECreateMessageArgs } from '@web3modal/siwe'
-import { createWeb3Modal } from '@web3modal/wagmi/vue'
+import { createWeb3Modal, useWalletInfo } from '@web3modal/wagmi/vue'
 import { useApi } from '../services/api'
 import type { Config } from '@wagmi/core'
 import type { Hex } from 'viem'
+import { useAccount } from '@wagmi/vue'
 
 export function initWeb3Modal({ config }: { config: Config }) {
   const api = useApi()
   const { session, projectId } = useSession()
+
+  const { connector } = useAccount()
 
   async function signIn() {
     // backend call to sign in
@@ -51,6 +54,11 @@ export function initWeb3Modal({ config }: { config: Config }) {
     verifyMessage: async ({ message, signature }) => {
       console.log('web3modal SIWE: verifying message', { message, signature })
 
+      if (connector.value) {
+        const { id, type, name } = connector.value
+        console.log({ id, type, name })
+      }
+
       try {
         const { isValid } = await api.signIn({
           message,
@@ -62,7 +70,12 @@ export function initWeb3Modal({ config }: { config: Config }) {
         return false
       }
     },
-    signOut: async () => true,
+    signOut: async () => {
+      console.log('web3modal SIWE: signing out')
+
+      await api.signOut()
+      return true
+    },
   })
 
   const web3modal = projectId.value
