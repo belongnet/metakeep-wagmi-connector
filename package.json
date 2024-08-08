@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "author": "reslear <reslear@gmail.com>",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -27,16 +28,21 @@
     "!dist/**/*.tsbuildinfo",
     "src/**/*.ts"
   ],
-  "sideEffects": false,
   "scripts": {
-    "dev": "cd playground && pnpm dev",
     "build": "pnpm run clean && pnpm run build:esm+types",
     "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "dev": "cd playground && pnpm dev",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "metakeep": "^2.2.6"
+  },
+  "devDependencies": {
+    "@wagmi/core": "2.13.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "viem": "^2.19.2"
   },
   "peerDependencies": {
     "@wagmi/core": "2.x",
@@ -47,12 +53,6 @@
     "typescript": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "viem": "^2.19.2",
-    "@wagmi/core": "2.13.3",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
   },
   "publishConfig": {
     "access": "public"
