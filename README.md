@@ -1,5 +1,9 @@
 # metakeep-wagmi-connector
 
+<p align="center">
+  <img src="./docs/cover.gif" alt="metakeep-wagmi-connector" width="696" />
+</p>
+
 [![Version](https://img.shields.io/npm/v/@belongnet/metakeep-wagmi-connector)](https://www.npmjs.com/package/@belongnet/metakeep-wagmi-connector)
 [![Downloads](https://img.shields.io/npm/dw/@belongnet/metakeep-wagmi-connector)](https://www.npmjs.com/package/@belongnet/metakeep-wagmi-connector)
 [![install size](https://packagephobia.com/badge?p=@belongnet/metakeep-wagmi-connector)](https://packagephobia.com/result?p=@belongnet/metakeep-wagmi-connector)
@@ -78,33 +82,7 @@ console.log(authorizedUser)
 
 ## Migration Guide
 
-1. Follow the installation steps [Wagmi migrate from v1 to v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
-2. Update the `@belongnet/metakeep-wagmi-connector` to the latest version.
-3. Update the connector configuration to use the new import
-
-```diff
-
--import { MetaKeepConnector } from '@belongnet/metakeep-wagmi-connector';
-+import { metaKeep } from '@belongnet/metakeep-wagmi-connector'
-```
-
-4. Update the connector configuration to use the new import
-
-```diff
-  connectors: [
--    new MetaKeepConnector({
--     chains,
--      options: {
--        appId: import.meta.env.VITE_META_KEEP_APP_ID,
--      },
--    }),
-+   metaKeep({
-+     appId: import.meta.env.VITE_META_KEEP_APP_ID,
-+   }),
-  ],
-```
-
-Also connector for Wagmi v1 docs are still available at [0.x branch](https://github.com/reslear/metakeep-wagmi-connector/tree/0.x)
+- [Migrate from Wagmi v1 to v2](docs/migration-guide.md)
 
 ## Links
 
