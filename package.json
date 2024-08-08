@@ -29,14 +29,14 @@
     "src/**/*.ts"
   ],
   "scripts": {
+    "dev": "pnpm build:esm+types -w --preserveWatchOutput",
     "build": "pnpm run clean && pnpm run build:esm+types",
     "build:esm+types": "tsc --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
-    "dev": "cd playground && pnpm dev",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "metakeep": "^2.2.6"
+    "metakeep": "2.2.3"
   },
   "devDependencies": {
     "@wagmi/core": "2.13.3",
