@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.4.0
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.1...v0.4.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Wagmi 2.13 ([b7b316b](https://github.com/belongnet/metakeep-wagmi-connector/commit/b7b316b))
+
+### 📖 Documentation
+
+- ⚠️  Enhance docs ([a8f8a8d](https://github.com/belongnet/metakeep-wagmi-connector/commit/a8f8a8d))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Wagmi 2.13 ([b7b316b](https://github.com/belongnet/metakeep-wagmi-connector/commit/b7b316b))
+- ⚠️  Enhance docs ([a8f8a8d](https://github.com/belongnet/metakeep-wagmi-connector/commit/a8f8a8d))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.3.1
 
 [compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.0...v0.3.1)
