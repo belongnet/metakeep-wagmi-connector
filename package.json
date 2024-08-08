@@ -36,7 +36,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "metakeep": "^2.2.3"
+    "metakeep": "^2.2.6"
   },
   "peerDependencies": {
     "@wagmi/core": "2.x",
@@ -49,10 +49,10 @@
     }
   },
   "devDependencies": {
-    "viem": "^2.13.6",
-    "@wagmi/core": "2.10.5",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "viem": "^2.19.2",
+    "@wagmi/core": "2.13.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
   "publishConfig": {
     "access": "public"

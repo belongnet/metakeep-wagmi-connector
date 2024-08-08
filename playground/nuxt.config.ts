@@ -6,11 +6,13 @@ export default defineNuxtConfig({
   modules: ['@wagmi/vue/nuxt'],
   devtools: { enabled: true },
   css: ['assets/style.css'],
+
   app: {
     head: {
       title: 'Metakeep connector',
     },
   },
+
   vite: {
     resolve: {
       alias: {
@@ -24,4 +26,6 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag.includes('-'),
     },
   },
+
+  compatibilityDate: '2024-08-08',
 })
