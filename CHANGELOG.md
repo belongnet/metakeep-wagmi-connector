@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.3.1
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.0...v0.3.1)
+
+### 🩹 Fixes
+
+- **playground:** Default env merge ([c9cb9b3](https://github.com/belongnet/metakeep-wagmi-connector/commit/c9cb9b3))
+
+### 💅 Refactors
+
+- **playground:** Move to nuxt ([3751d8b](https://github.com/belongnet/metakeep-wagmi-connector/commit/3751d8b))
+- Migrate to viem/siwe ([262b015](https://github.com/belongnet/metakeep-wagmi-connector/commit/262b015))
+- **playground:** SignOut, getSession connector, injected, don't show showQrModal ([9be0559](https://github.com/belongnet/metakeep-wagmi-connector/commit/9be0559))
+- Update to `@wagmi/core` 2.13, `metakeep` 2.2.6, fix playground ([1182f95](https://github.com/belongnet/metakeep-wagmi-connector/commit/1182f95))
+
+### 🏡 Chore
+
+- **playground:** Compete migrate to nuxt ([ae68266](https://github.com/belongnet/metakeep-wagmi-connector/commit/ae68266))
+- Add deploy pages workflow ([25e2bff](https://github.com/belongnet/metakeep-wagmi-connector/commit/25e2bff))
+- Fix workflow node v20 ([d91708f](https://github.com/belongnet/metakeep-wagmi-connector/commit/d91708f))
+- Fix workflow ([26fda83](https://github.com/belongnet/metakeep-wagmi-connector/commit/26fda83))
+- Fix workflow pnpm ([ea0441a](https://github.com/belongnet/metakeep-wagmi-connector/commit/ea0441a))
+- Fix workflow pnpm build ([1843762](https://github.com/belongnet/metakeep-wagmi-connector/commit/1843762))
+- Build lib before ([f7987b2](https://github.com/belongnet/metakeep-wagmi-connector/commit/f7987b2))
+- Set artifact folder ([1e58b15](https://github.com/belongnet/metakeep-wagmi-connector/commit/1e58b15))
+- **playground:** Variables ([ee8da4c](https://github.com/belongnet/metakeep-wagmi-connector/commit/ee8da4c))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.3.0
 
 [compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.2.6...v0.3.0)
