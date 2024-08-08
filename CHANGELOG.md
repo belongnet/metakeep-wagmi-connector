@@ -2,7 +2,7 @@
 
 ## v0.4.0
 
-[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.1...v0.4.0)
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.4.0-rc.0...v0.4.0)
 
 ### 🚀 Enhancements
 
@@ -21,9 +21,9 @@
 
 - Reslear <reslear@gmail.com>
 
-## v0.3.1
+## v0.4.0-rc.0
 
-[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.0...v0.3.1)
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.3.0...v0.4.0-rc.0)
 
 ### 🩹 Fixes
 
