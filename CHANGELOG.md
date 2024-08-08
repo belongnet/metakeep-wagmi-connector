@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.5.0
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.4.0...v0.5.0)
+
+### 🩹 Fixes
+
+- ⚠️  Downgrade metakeep to 2.2.3 to resolve compatibility ([0d5ae88](https://github.com/belongnet/metakeep-wagmi-connector/commit/0d5ae88))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Downgrade metakeep to 2.2.3 to resolve compatibility ([0d5ae88](https://github.com/belongnet/metakeep-wagmi-connector/commit/0d5ae88))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.4.0
 
 [compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.4.0-rc.0...v0.4.0)
