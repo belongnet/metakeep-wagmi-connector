@@ -80,6 +80,32 @@ const authorizedUser = provider.getUser()
 console.log(authorizedUser)
 ```
 
+## Config 
+
+The connector accepts the following options:
+
+### `appId` - MetaKeep App ID
+
+You can get the `appId` from the MetaKeep dashboard.
+
+```ts
+metaKeep({
+  appId: import.meta.env.VITE_META_KEEP_APP_ID,
+}),
+```
+
+### `name` - Custom connector name 
+
+You can set a custom name for the connector, by default it's `MetaKeep`.
+
+```ts
+metaKeep({
+  name: 'MyMetaKeep',
+}),
+```
+
+
+
 ## Migration Guide
 
 - [Migrate from Wagmi v1 to v2](docs/migration-guide.md)

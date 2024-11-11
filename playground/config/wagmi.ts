@@ -24,6 +24,7 @@ export const wagmiAdapter = new WagmiAdapter({
   connectors: [
     metaKeep({
       appId: appId.value,
+      customName: 'Metakeep Connector',
     }),
   ],
   transports: {

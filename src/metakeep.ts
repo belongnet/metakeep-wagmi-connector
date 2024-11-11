@@ -17,6 +17,15 @@ import type { Compute } from '@wagmi/core/internal'
 export type MetaKeepParameters = Compute<
   Omit<ConstructorParameters<typeof MetaKeep>[0], 'user'> & {
     user?: { email: string }
+
+    /**
+     * Connect custom name
+     * 
+     * @default 'MetaKeep'
+     * 
+     * @example 'Connect with MetaKeep'
+     */
+    customName?: string
   }
 >
 
@@ -56,7 +65,7 @@ export function metaKeep(parameters: MetaKeepParameters) {
 
   return createConnector<Provider, Properties, StorageItem>((config) => ({
     id: 'metakeep',
-    name: 'MetaKeep',
+    name: parameters.customName ?? 'MetaKeep',
     type: 'MetaKeep',
 
     async connect({ chainId } = {}) {
