@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.5.2
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.5.1...v0.5.2)
+
+### 💅 Refactors
+
+- Use metakeep `EthereumProvider` type ([6c22d60](https://github.com/belongnet/metakeep-wagmi-connector/commit/6c22d60))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.5.1
 
 [compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.5.0...v0.5.1)

@@ -1,6 +1,6 @@
 {
   "name": "@belongnet/metakeep-wagmi-connector",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Metakeep connector for Wagmi",
   "keywords": [
     "metakeep",
