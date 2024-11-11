@@ -36,13 +36,13 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "metakeep": "2.2.3"
+    "metakeep": "2.2.8"
   },
   "devDependencies": {
-    "@wagmi/core": "2.13.3",
+    "@wagmi/core": "2.14.4",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "viem": "^2.19.2"
+    "typescript": "^5.6.3",
+    "viem": "^2.21.44"
   },
   "peerDependencies": {
     "@wagmi/core": "2.x",
