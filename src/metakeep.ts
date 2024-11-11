@@ -1,4 +1,4 @@
-import type { MetaKeep } from 'metakeep'
+import type { MetaKeep, EthereumProvider } from 'metakeep'
 import {
   ProviderRpcError,
   SwitchChainError,
@@ -20,23 +20,21 @@ export type MetaKeepParameters = Compute<
 
     /**
      * Connect custom name
-     * 
+     *
      * @default 'MetaKeep'
-     * 
+     *
      * @example 'Connect with MetaKeep'
      */
     customName?: string
   }
 >
 
-export type MetaKeepProvider = {
-  chainId: number
-  accounts: Address[]
+export type MetaKeepProvider = EthereumProvider & {
+  // private methods
   enable: () => Promise<string[]>
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>
   getUser: () => { email: string }
   setUser: (args: { email: string }) => void
-  connected: boolean
 }
 
 const SESSION_TIMEOUT = 3 * 24 * 60 * 60 * 1000

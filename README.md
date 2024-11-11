@@ -15,7 +15,7 @@ Connector for integrating [wagmi v2.x](https://wagmi.sh/) with the [MetaKeep.xyz
 **Features:**
 
 - ⚙ Connects with [wagmi v2](https://wagmi.sh/)
-- 🔮 Supports [Web3Modal](https://docs.walletconnect.com/web3modal/about)
+- 🔮 Supports [Reown AppKit](https://github.com/reown-com/appkit) (Web3Modal)
 - 📐 Session validations and caching
 - 🔐 Supports One-Click Auth / SIWE
 - 💡 Lightweight ~26kB
@@ -80,7 +80,7 @@ const authorizedUser = provider.getUser()
 console.log(authorizedUser)
 ```
 
-## Config 
+## Config
 
 The connector accepts the following options:
 
@@ -94,7 +94,7 @@ metaKeep({
 }),
 ```
 
-### `name` - Custom connector name 
+### `name` - Custom connector name
 
 You can set a custom name for the connector, by default it's `MetaKeep`.
 
@@ -103,8 +103,6 @@ metaKeep({
   name: 'MyMetaKeep',
 }),
 ```
-
-
 
 ## Migration Guide
 
