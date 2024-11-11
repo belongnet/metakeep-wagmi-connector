@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.5.1
+
+[compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.5.0...v0.5.1)
+
+### 🚀 Enhancements
+
+- Metakeep 2.2.8 ([2907bbe](https://github.com/belongnet/metakeep-wagmi-connector/commit/2907bbe))
+- Add `customName` ([d59238c](https://github.com/belongnet/metakeep-wagmi-connector/commit/d59238c))
+
+### 💅 Refactors
+
+- **playground:** Migrate to `@reown/appkit` ([b1e5f6f](https://github.com/belongnet/metakeep-wagmi-connector/commit/b1e5f6f))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.5.0
 
 [compare changes](https://github.com/belongnet/metakeep-wagmi-connector/compare/v0.4.0...v0.5.0)
