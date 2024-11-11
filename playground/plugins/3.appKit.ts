@@ -1,20 +1,21 @@
-import { createSIWEConfig, formatMessage } from '@web3modal/siwe'
-import type { SIWECreateMessageArgs } from '@web3modal/siwe'
-import { createWeb3Modal, useWalletInfo } from '@web3modal/wagmi/vue'
+import {
+  type SIWECreateMessageArgs,
+  createSIWEConfig,
+  formatMessage,
+} from '@reown/appkit-siwe'
 import { useApi } from '../services/api'
-import type { Config } from '@wagmi/core'
 import type { Hex } from 'viem'
 import { useAccount } from '@wagmi/vue'
+import { createAppKit } from '@reown/appkit/vue'
+import { wagmiAdapter, networks, metadata } from '~/config/wagmi'
 
-export function initWeb3Modal({ config }: { config: Config }) {
+export default defineNuxtPlugin((nuxtApp) => {
   const api = useApi()
   const { session, projectId } = useSession()
-
   const { connector } = useAccount()
 
   async function signIn() {
-    // backend call to sign in
-
+    // backend call to sign i
     console.log('web3modal SIWE: signing in')
     return true
   }
@@ -24,7 +25,7 @@ export function initWeb3Modal({ config }: { config: Config }) {
     getMessageParams: async () => ({
       domain: window.location.host,
       uri: window.location.origin,
-      chains: config.chains.map((chain) => chain.id),
+      chains: networks.map((chain) => chain.id as number),
       statement: 'Please sign with your account',
       iat: new Date().toISOString(),
     }),
@@ -78,17 +79,20 @@ export function initWeb3Modal({ config }: { config: Config }) {
     },
   })
 
-  const web3modal = projectId.value
-    ? createWeb3Modal({
-        wagmiConfig: config,
+  const appKit = projectId.value
+    ? createAppKit({
+        adapters: [wagmiAdapter],
+        networks,
         projectId: projectId.value,
-        enableAnalytics: true, // Optional - defaults to your Cloud configuration
-        enableOnramp: true, // Optional - false as default
+        metadata,
+        features: {
+          analytics: true,
+          email: false,
+          socials: false,
+        },
         siweConfig,
       })
     : null
 
-  return {
-    web3modal,
-  }
-}
+  nuxtApp.vueApp.provide('appKit', appKit)
+})

@@ -1,8 +1,8 @@
 import { WagmiPlugin } from '@wagmi/vue'
 import { defineNuxtPlugin } from 'nuxt/app'
 
-import { config } from '../config/wagmi'
+import { wagmiAdapter } from '../config/wagmi'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(WagmiPlugin, { config })
+  nuxtApp.vueApp.use(WagmiPlugin, { config: wagmiAdapter.wagmiConfig })
 })

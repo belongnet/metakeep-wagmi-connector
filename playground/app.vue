@@ -21,7 +21,7 @@ function setDefault() {
 <template>
   <header>
     <h1 style="margin-bottom: 0">MetaKeep wagmi Playground</h1>
-    <p style="margin: 0">with Web3modal and Siwe</p>
+    <p style="margin: 0">with AppKit and Siwe</p>
   </header>
 
   <main class="container">
@@ -37,8 +37,8 @@ function setDefault() {
         <SignMessage />
       </section>
       <section>
-        <h2>Web3Modal</h2>
-        <Web3Modal />
+        <h2>AppKit</h2>
+        <AppKit />
       </section>
       <section>
         <h2>MetaKeep SDK</h2>
@@ -55,7 +55,7 @@ function setDefault() {
         <input v-model="projectId" />
       </div>
 
-      <a href class="link" @click.prevent="setDefault()">default</a>
+      <a class="link" @click.prevent="setDefault()">default</a>
       <button @click="() => setAppId()">Set</button>
     </section>
   </main>

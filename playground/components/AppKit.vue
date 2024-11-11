@@ -1,16 +1,16 @@
 <script setup lang="ts">
 // https://github.com/WalletConnect/web3modal/blob/V4/examples/vue-wagmi/src/App.vue
-import { useWeb3Modal } from '@web3modal/wagmi/vue'
+import { useAppKit } from '@reown/appkit/vue'
 
-const modal = useWeb3Modal()
+const modal = useAppKit()
 </script>
 
 <template>
   <div class="center">
     <h4>Web components</h4>
     <div>
-      <w3m-button />
-      <w3m-network-button />
+      <appkit-button />
+      <appkit-network-button />
     </div>
 
     <h4>Composition API</h4>
